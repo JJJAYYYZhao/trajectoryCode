@@ -4,10 +4,10 @@ import torch.nn.functional as F
 import numpy as np
 from modeling.vectornet import VectorNet
 from modeling.Transformer_Lib import TransDecoder
-from utils.func_lab import get_from_mapping, batch_init_origin, to_origin_coordinate, trans_3D_2D, get_dis_point_2_points
+from utils.func_lab import get_from_mapping, batch_init_origin, to_origin_coordinate, get_dis_point_2_points
 import json
-from utils.calibration import Calibration
-from utils.calibration_ns import Calibration_NS
+# from utils.calibration import Calibration
+# from utils.calibration_ns import Calibration_NS
 
 
 class TFTraj(nn.Module):
@@ -31,9 +31,9 @@ class TFTraj(nn.Module):
             labels = torch.tensor(labels_np, dtype=torch.float, device=self.device)  # [len,bs,2]
         else:
             labels = None
-        his_traj_ = get_from_mapping(mapping, 'agents')  # list[bs]=list[n]=[?,2]
-        his_traj_np = [lll[0] for lll in his_traj_]
-        his_traj_np = np.array(his_traj_np)  # [bs,20,2]
+        #his_traj_ = get_from_mapping(mapping, 'agents')  # list[bs]=list[n]=[?,2]
+        #his_traj_np = [lll[0] for lll in his_traj_]
+        #his_traj_np = np.array(his_traj_np)  # [bs,20,2]
         # last_state = torch.tensor(his_traj_np[:, -1, :], dtype=torch.float, device=self.device)  # [bs,2]
         _, _, _, _, h_states = self.tf_encoder(mapping, self.device, infer)  # [bs,max_p_n,128]
         # tgt = h_states[:, 0:1, :]  # [bs,1,dim]

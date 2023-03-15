@@ -15,6 +15,7 @@ def make_dataloader(cfg, type):
     dset = dataset_classes[dname]
     if (cfg.distributed == 1) or (type != 'train'):
         dataset = dset(cfg, type, cfg.modality)
+        item=dataset[4]
         dataloader = DataLoader(dataset,
                                 batch_size=cfg.DATA.batch_size,
                                 shuffle=cfg.DATALOADER.shuffle,

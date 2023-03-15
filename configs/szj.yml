@@ -13,11 +13,11 @@ DATA:
   obs_len: 20
   pred_len: 30
   batch_size: 64
-  subset: False
+  subset: True
   split: True
 
 DATALOADER:
-  data_dir: '../argoverse-data/processed'
+  data_dir: './argoverse-data/processed'
   calib_path: '../argoverse-data/vehicle_calibration_info.json'
   num_worker: 0
   shuffle: True
